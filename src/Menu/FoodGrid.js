@@ -8,7 +8,7 @@ export const FoodGrid = styled.div`
   gap: 20px;
 `;
 
-export const FoodLable = styled.div`
+export const FoodLabel = styled.div`
   position: absolute;
   background-color: rgba(255, 255, 255, 0.7);
   padding: 5px;
