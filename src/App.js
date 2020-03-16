@@ -18,7 +18,7 @@ function App() {
       <GlobalStyle />
       <FoodDialog {...orders} {...openFood} />
       <NavBar />
-      <Order {...orders} />
+      <Order {...orders} {...openFood} />
       <Banner />
       <Menu {...openFood} />
     </Fragment>
