@@ -1,16 +1,18 @@
 import React, { Fragment } from 'react';
 import styled from 'styled-components';
 import { FoodLabel } from '../Menu/FoodGrid';
-
+import { pizzaRed } from '../Styles/colors';
+import { Title } from '../Styles/title';
 const Dialog = styled.div`
   width: 500px;
-  height: 500px;
   background-color: #fff;
   position: fixed;
   top: 75px;
+  max-height: calc(100% - 100px);
   left: calc(50% - 250px);
-  max-height: calc(100%-100px);
   z-index: 5;
+  display: flex;
+  flex-direction: column;
 `;
 const DialogShadow = styled.div`
   position: fixed;
@@ -36,8 +38,31 @@ const DialogBannerName = styled(FoodLabel)`
   font-size: 30px;
   padding: 5px 40px;
 `;
+export const DialogContent = styled.div`
+  overflow: auto;
+  min-height: 100px;
+`;
+export const DialogFotter = styled.div`
+  box-shadow: 0px -2px 10px 0px grey;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+`;
 
-export default function FoodDialog({ openFood, setOpenFood }) {
+export const ConfirmButton = styled(Title)`
+  margin: 10px;
+  color: #fff;
+  height: 20px;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
+  cursor: pointer;
+  border: 1px solid #000;
+  background-color: ${pizzaRed};
+`;
+
+export function FoodDialog({ openFood, setOpenFood }) {
   function close() {
     setOpenFood();
   }
@@ -48,6 +73,10 @@ export default function FoodDialog({ openFood, setOpenFood }) {
         <DialogBanner img={openFood.img}>
           <DialogBannerName>{openFood.name}</DialogBannerName>
         </DialogBanner>
+        <DialogContent></DialogContent>
+        <DialogFotter>
+          <ConfirmButton>Confirm</ConfirmButton>
+        </DialogFotter>
       </Dialog>
     </Fragment>
   ) : null;
