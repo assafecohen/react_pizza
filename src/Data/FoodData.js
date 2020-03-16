@@ -1,3 +1,10 @@
+export function formatPrice(price) {
+  return price.toLocaleString('en-US', {
+    style: 'currency',
+    currency: 'USD'
+  });
+}
+
 export const foodItems = [
   {
     name: 'Cheese Pizza',
@@ -41,6 +48,12 @@ export const foodItems = [
     name: 'Fries',
     section: 'Sides',
     price: 1
+  },
+  {
+    price: 1,
+    name: 'Soda',
+    section: 'Drinks',
+    choices: ['Coke', 'Sprite', 'Root Beer']
   }
 ];
 

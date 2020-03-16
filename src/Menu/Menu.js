@@ -26,6 +26,7 @@ export function Menu({ setOpenFood }) {
               >
                 <FoodLabel>
                   <div>{food.name}</div>
+                  <div>{formatPrice(food.price)}</div>
                 </FoodLabel>
               </Food>
             ))}
