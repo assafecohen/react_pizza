@@ -51,7 +51,7 @@ const DetailItem = styled.div`
   color: gray;
   font-size: 10px;
 `;
-export function Order({ orders, setOrders, setOpenFood }) {
+export function Order({ orders, setOrders, setOpenFood, loggedIn, login }) {
   const subtotal = orders.reduce((total, order) => {
     return total + getPrice(order);
   }, 0);
@@ -87,7 +87,9 @@ export function Order({ orders, setOrders, setOpenFood }) {
                     deleteItem(index);
                   }}
                 >
-                  🗑️
+                  <span role='img' aria-label='pizza slice'>
+                    🗑️
+                  </span>
                 </div>
                 <div>{formatPrice(getPrice(order))}</div>
               </OrderItem>
@@ -120,7 +122,17 @@ export function Order({ orders, setOrders, setOpenFood }) {
         </OrderContent>
       )}
       <DialogFotter>
-        <ConfirmButton>Chectout</ConfirmButton>
+        <ConfirmButton
+          onClick={() => {
+            if (loggedIn) {
+              console.log('logged in');
+            } else {
+              login();
+            }
+          }}
+        >
+          Checkout
+        </ConfirmButton>
       </DialogFotter>
     </OrderStyled>
   );

@@ -10,7 +10,6 @@ const MenuStyled = styled.div`
 `;
 
 export function Menu({ setOpenFood }) {
-  console.log(foods);
   return (
     <MenuStyled>
       {Object.entries(foods).map(([sectionName, foods]) => (

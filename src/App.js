@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { NavBar } from './NavBar/NavBar';
 import { Banner } from './Banner/Banner';
 import { Menu } from './Menu/Menu';
@@ -8,17 +8,20 @@ import { GlobalStyle } from './Styles/GlobalStyle';
 import { useOpenFood } from './Hooks/useOpenFood';
 import { useOrders } from './Hooks/useOrders';
 import { useTitle } from './Hooks/useTitle';
+import { useAuthentication } from './Hooks/useAuthentication';
+
 function App() {
   const openFood = useOpenFood();
   const orders = useOrders();
+  const auth = useAuthentication();
   useTitle({ ...openFood, ...orders });
 
   return (
     <Fragment>
       <GlobalStyle />
       <FoodDialog {...orders} {...openFood} />
-      <NavBar />
-      <Order {...orders} {...openFood} />
+      <NavBar {...auth} />
+      <Order {...orders} {...openFood} {...auth} />
       <Banner />
       <Menu {...openFood} />
     </Fragment>
